@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    User.fetchById('5cb75dfe1c9d44000011681f')
+    User.findById('5cbe288d3e37150ad81a4664')
         .then(user=> {
-            req.user = new User(user.username, user.email, user.cart, user._id);
+            req.user = user;
             next();
         })
         .catch(err => console.log(err));
@@ -43,6 +43,18 @@ app.use(shopRoutes);
 
 mongoose.connect('mongodb+srv://express-one:Kamikaz1@express-one-vpvtr.mongodb.net/shop?retryWrites=true')
     .then(connection => {
+        User.findOne().then(user => {
+            if (!user) {
+                const user = new User({
+                    name: 'Georges',
+                    email: 'favouille@gmail.com',
+                    cart: {
+                        items: []
+                    }
+                });
+                user.save();
+            }
+        });
         app.listen(3000);
     })
     .catch(err => console.log(err));
