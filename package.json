@@ -20,7 +20,9 @@
     "express-handlebars": "^3.0.0",
     "mariadb": "^2.0.3",
     "mongodb": "^3.2.3",
+    "mongoose": "^5.5.2",
     "mysql2": "^1.6.5",
+    "npm": "^6.9.0",
     "pug": "^2.0.3",
     "sequelize": "^5.2.15"
   }

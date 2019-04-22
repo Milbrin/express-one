@@ -10,10 +10,10 @@
                 <ul>
                     <% orders.forEach(order => { %>
                     <li class="cart__item">
-                        <h1># <%= order.id %></h1>
+                        <h1># <%= order._id %></h1>
                         <ul>
-                            <% order.products.forEach(product => { %>
-                                <li><%= product.orderItem.quantity %> * <%= product.title %> = <%= product.orderItem.quantity*product.price %> €</li>
+                            <% order.items.forEach(product => { %>
+                                <li><%= product.quantity %> * <%= product.title %> = <%= product.quantity*product.price %> €</li>
                             <% }); %>
                         </ul>
                     </li>
